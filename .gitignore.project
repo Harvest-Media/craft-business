@@ -1,0 +1,23 @@
+##################
+# OS X system files
+.DS_Store
+
+##################
+# Server Config Files
+.htaccess
+
+##################
+# Craft CMS
+/.env
+/.idea
+/vendor
+
+##################
+# Build Files
+.sass-cache
+*.sass-cache
+node_modules
+
+##################
+# Harvest Media
+/harvest-setup.sh

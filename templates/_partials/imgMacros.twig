@@ -1,0 +1,36 @@
+{#
+  see also https://gist.github.com/sjelfull/b29f2d78c33fd6c8c3cf7cba03eb3bc9
+#}
+
+{%- macro srcset(image, outputWidths, aspectRatio) -%}
+
+  {# small src #}
+  {%- set src = image.url({ width: 150, height: 150 * aspectRatio, quality: 0 }) -%}
+  {# {%- set src = image.url({ width: 1200 }) -%}  #}
+
+  {# setup #}
+  {%- set outputWidths = outputWidths | default([640, 1024, 1200, 1600]) -%}
+  {%- set srcset = [] -%}
+  {%- set sizes = [] -%}
+
+  {# if output width is smaller than or equal to the original image width #}
+  {%- for outputWidth in outputWidths -%}
+    {%- if outputWidth <= image.width -%}
+      {%- if aspectRatio -%}
+        {%- set transformOptions = { width: outputWidth, height: outputWidth * aspectRatio } -%}
+      {%- else -%}
+        {%- set transformOptions = { width: outputWidth } -%}
+      {%- endif -%}
+
+      {%- set srcset = srcset | merge([image.url(transformOptions) ~ ' ' ~ outputWidth ~ 'w']) -%}
+      {%- if not loop.last -%}
+        {%- set sizes = sizes | merge(['(maxwidth: '~ outputWidth ~'px) ' ~ outputWidth ~ 'px']) -%}
+      {%- else -%}
+        {%- set sizes = sizes | merge([outputWidth ~ 'px']) -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {# output srcset #}
+  data-srcset="{{- srcset | join(', ') -}}" sizes="{{- sizes | join(', ') -}}" data-src="{{- src -}}"
+{%- endmacro -%}

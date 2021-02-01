@@ -1,0 +1,355 @@
+{% cacheflag flagged "content" globally using key craft.app.request.pathInfo ~ '/p' ~ craft.app.request.pageNum ~ '/q' ~ craft.app.request.getParam('q') %}
+{% import "_partials/imgMacros" as imgMacros %}
+{% import "_partials/typographyMacros" as typographyMacros %}
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+	{# Meta #}
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	{# Title and meta description inserted by SEOmatic plugin #}
+
+	{# Favicon and device icons - generate at http://realfavicongenerator.net #}
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6b0004">
+	<meta name="msapplication-TileColor" content="#6b0004">
+	<meta name="theme-color" content="#ffffff">
+
+	{# Web Fonts #}
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet"> 
+
+	{# CSS #}
+	<link href="/assets/css/theme.css{% if not craft.app.config.general.devMode %}?v={{now|date("U")}}{% endif %}" rel="stylesheet" type="text/css" media="screen">
+
+	{# - Other Page Specific Head Content ---------------------- #}
+	{% block headExtra %}{% endblock %}
+
+</head>
+
+<body>
+
+	{# - Off Canvas Wrapper for entire page ---------------------- #}
+	<div class="off-canvas-wrapper">
+
+	{# - Off Canvas Nav (Foundation Off Canvas Plugin) ---------------------- #}
+	<div id="jsOffCanvasNav" class="off-canvas position-right bg-brand-navy-500" data-off-canvas data-auto-focus="false">
+
+		<div class="pb-8">
+			<button type="button" class="close-button off-canvas-nav-close" data-close aria-label="Close Modal">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<ul class="menu vertical accordion-menu px-4 py-8" data-accordion-menu> {# data-submenu-toggle="true" #}
+			<li>
+				<a href="{{siteUrl}}" class="py-4 text-brand-navy-100 text-xl">{{ svg('@webroot/assets/svg/home.svg')|attr({class:'icon'})|append('<title>Home</title>', 'replace') }} Home</a>
+			</li>
+			{% set mobileNavigation = craft.entries.section('pages').all() %}
+			{% nav page in mobileNavigation %}
+				<li class="{% if page.level == 1 %}bg-brand-navy-700 rounded-sm mb-2{% endif %}">
+					<a href="{{page.url}}" class="py-4 text-brand-navy-100{% if page.level == 1 %} text-xl{% endif %}">{{page.title}}</a>
+					{% ifchildren %}
+						<ul class="vertical menu nested">
+							{% children %}
+						</ul>
+					{% endifchildren %}
+				</li>
+			{% endnav %}
+		</ul>
+
+	</div>{# .off-canvas #}
+
+
+
+	{# - Off Canvas Page Content ---------------------- #}
+	<div class="relative z-0 pt-18 off-canvas-content" data-off-canvas-content>
+
+		{# - Masthead ---------------------- #}
+		<header class="fixed z-50 top-0 left-0 w-full bg-white shadow-sm">
+
+			<div class="flex items-center justify-between h-18 py-1 px-4">
+
+				<div class="block">
+					<a href="{{ siteUrl }}" class="block">
+						<img src="{{craft.app.config.general.theme.assetsImages}}dj-initials.svg" class="block sm:hidden w-16 h-10" alt="{{siteName}}">
+						<img src="{{craft.app.config.general.theme.assetsImages}}dj-web-logo-color.svg" class="hidden sm:block w-44 h-12" alt="{{siteName}}">
+					</a>
+				</div>
+
+				<ul class="menu align-middle align-right md:hidden">
+					<li class="sm:hidden">
+						<a class="block px-2 py-3 mr-2 text-gray-800" href="tel:+1{{ seomatic.site.identity.genericTelephone }}">{{ svg('@webroot/assets/svg/phone.svg')|attr({class:'inline-block h-6 w-6'})|append('<title>Call</title>', 'replace') }}</a>
+					</li>
+					<li>
+						<a class="bg-gray-100 rounded-sm flex items-center p-3 leading-none text-gray-900" href="#jsOffCanvasNav" data-open="jsOffCanvasNav">
+							{{ svg('@webroot/assets/svg/menu.svg')|attr({class:'block h-6 w-6'})|append('<title>Menu</title>', 'replace') }}
+						</a>
+					</li>
+				</ul>
+
+				<nav class="hidden md:block">
+					<ul class="menu simple align-middle">
+						{% set navigation = craft.entries({
+							section: 'pages',
+							level: 1,
+							id: 'not 4876'
+						}).all() %}
+						{% for page in navigation %}
+							<li>
+								{# https://craftcms.com/docs/2.x/templating/entrymodel.html#hasdescendants #}
+								{% set hasDescendants = page.getDescendants().count() != 0 %}
+
+								<a href="{{page.url}}" class="py-4 text-xs uppercase font-bold tracking-wide text-gray-800 hover:text-brand-maroon-600" {% if page.hasDescendants %}data-toggle="jsPane-{{page.id}}"{% endif %}>
+									{{page.title}} {% if hasDescendants %}{{ svg('@webroot/assets/svg/chevron-down.svg')|attr({class:'icon text-gray-400',role:'img'})|append('<title>Dropdown</title>', 'replace') }}{% endif %}
+								</a>
+
+								{% if hasDescendants %}
+									{% set subNavigation = page.getDescendants(2).all() %}
+									<div id="jsPane-{{page.id}}" class="dropdown-pane border-t-brand-maroon-500 border-t-4" data-dropdown data-hover="true" data-hover-pane="true">{# has-position-bottom has-alignment-left is-open #}
+										<ul class="m-0 p-0 list-none">
+										{% nav child in subNavigation %}
+											<li class="m-0 p-0 list-none {% if child.level == 2 %}my-2{% endif %}">
+												<a href="{{child.url}}" class="block py-1 text-gray-800 text-sm {% if child.level == 2 %}uppercase font-bold{% endif %}">{{child.title}}</a>
+												{% ifchildren %}
+													<ul class="m-0 p-0 list-none">
+														{% children %}
+													</ul>
+												{% endifchildren %}
+											</li>
+										{% endnav %}
+										</ul>
+									</div>
+								{% endif %}
+							</li>
+						{% endfor %}
+					</ul>
+				</nav>
+
+				{% set contactPage = craft.entries.section('pages').id('4527').one() %}
+				{% if contactPage|length %}
+				<div class="hidden md:block">
+					<a href="{{contactPage.url}}" class="button small mb-0">Get a Quote</a>
+				</div>
+				{% endif %}
+
+			</div>{# .flex #}
+
+		</header>
+
+		{# - Feature ---------------------- #}
+		{% block feature %}{% endblock %}
+
+		{# - Header (Hero) Image / Main Page Heading ---------------------- #}
+		{% block hero %}
+
+			{# cta links should be an array of objects such as [{ linkUrl:'#', linkText:'Your Button Text Here'}, ...] #}
+			{% set heroOptions = {
+				background: '',
+				heading: '',
+				subheading: '',
+				cta: []
+			} %}
+
+			{# See if a Header Image has already been set on the template #}
+			{% if heroBackground is defined and heroBackground != "" %}
+				{% set heroOptions = heroOptions|merge({'background': heroBackground}) %}
+
+			{# If not check for a Header Image on the current entry #}
+			{% elseif entry is defined and entry.headerImage|length %}
+				{% set heroOptions = heroOptions|merge({'background': imgMacros.srcset(entry.headerImage[0]) }) %}
+
+			{# Lastly, use a default image from the repo #}
+			{% else %}
+				{% set heroOptions = heroOptions|merge({'background': 'data-src="' ~ craft.app.config.general.theme.assetsImages ~ 'default-header.jpg"'}) %}
+			{% endif %}
+
+			{# Check for Heading Text #}
+			{% if pageHeading is defined and pageHeading != "" %}
+				{% set heroOptions = heroOptions|merge({'heading': pageHeading}) %}
+			{% elseif entry is defined and entry.heading != "" %}
+				{% set heroOptions = heroOptions|merge({'heading': entry.heading}) %}
+			{% elseif pageTitle is defined and pageTitle != "" %}
+				{% set heroOptions = heroOptions|merge({'heading': pageTitle}) %}
+			{% elseif entry is defined and entry.title != "" %}
+				{% set heroOptions = heroOptions|merge({'heading': entry.title}) %}
+			{% endif %}
+
+			{# Check for a Subheading #}
+			{% if pageSubHeading is defined and pageSubHeading != "" %}
+				{% set heroOptions = heroOptions|merge({'subheading': pageSubHeading}) %}
+			{% elseif entry is defined and entry.subheading != "" %}
+				{% set heroOptions = heroOptions|merge({'subheading': entry.subheading}) %}
+			{% endif %}
+
+			{# Check for CTA Links #}
+			{% if pageCTA is defined and pageCTA|length %}
+				{% set heroOptions = heroOptions|merge({'cta': pageCTA}) %}
+			{% endif %}
+
+			<div class="relative z-0 flex flex-col min-h-48 md:min-h-96 bg-brand-navy-600">
+
+				<div class="relative z-20 flex flex-col flex-1 justify-center max-w-4xl mx-auto text-center">
+					<h1 class="text-3xl sm:text-5xl lg:text-6xl text-gray-50 leading-none mb-4">{{heroOptions.heading}}</h1>
+
+					{% if heroOptions.subheading != "" %}
+					<p class="text-brand-navy-100 uppercase text-xl tracking-widest {% if heroOptions.cta|length %}mb-4{% endif %}">{{heroOptions.subheading}}</p>
+					{% endif %}
+
+					{% if heroOptions.cta|length %}
+					<ul class="flex flex-wrap w-full items-center justify-center">
+					{% for link in heroOptions.cta %}
+					<li class="w-full sm:w-auto">
+						<a class="button white m-1 w-full sm:w-auto" href="{{link.linkUrl}}">{{link.linkText}}</a>
+					</li>
+					{% endfor %}
+					</ul>
+					{% endif %}
+				</div>
+				<div class="absolute z-10 w-full h-full left-0 top-0 bg-gradient-to-t from-brand-navy-800 to-transparent opacity-50"></div>
+				<img class="absolute z-0 w-full h-full left-0 top-0 object-cover object-center opacity-50 lazyload" alt="{{ heroOptions.heading }}" {{ heroOptions.background|raw }}>
+			</div>
+
+		{% endblock %}
+
+
+		{# - Content - defaults to a 2 columns layout ---------------------- #}
+		{% block contentWrap %}
+		<div class="relative z-10 p-4 pb-0">
+			{% block aboveContent %}{% endblock %}
+			{% block content %}
+				<main>
+					{% block aboveMain %}{% endblock %}
+					{% block main %}{% endblock %}
+					{% block belowMain %}{% endblock %}
+				</main>
+			{% endblock %}
+			{% block belowContent %}{% endblock %}
+		</div>
+		{% endblock %}
+
+
+		{# - Call to Action ---------------------- #}
+		{% block CTA %}
+			<div class="relative z-0 bg-brand-navy-500 shadow-inner">
+				<div class="relative z-20 max-w-3xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+					<h2 class="text-3xl md:text-4xl font-extrabold text-white sm:text-4xl">Contact Us Today for a Free Estimate</h2>
+					<p class="mt-4 text-lg leading-6 text-brand-navy-200">You can rest easy knowing that you’ll receive unmatched customer service and a warranty that goes above and beyond typical manufacturers’ guarantees.</p>
+					{% if contactPage|length %}
+					<a href="{{contactPage.url}}" class="button large white">Contact D&amp;J</a>
+					{% endif %}
+				</div>
+				<div class="absolute z-10 w-full h-full left-0 top-0 stripe-pattern"></div>
+				<img class="absolute z-0 w-full h-full left-0 top-0 object-cover object-center opacity-10 lazyload" data-src="{{craft.app.config.general.theme.assetsImages}}default-header.jpg" alt="Background Image Contact D&J Roofing">
+			</div>
+		{% endblock %}
+
+
+		{# - Footer ---------------------- #}
+		<footer class="relative z-0 px-4 py-6 md:py-12 bg-brand-navy-800 text-brand-navy-100 border-brand-navy-600 border-solid border-0 border-t-8">
+
+			{% set footerHeadingClasses = "uppercase text-xl text-white tracking-wider font-extrabold font-sans" %}
+
+			<h2 class="show-for-sr">Footer, Additional Links and Contact Information</h2>
+			<div class="max-w-screen-xl mx-auto mb-6 md:mb-18 grid grid-cols-1 md:grid-cols-4 md:gap-6">
+				<div class="mb-6 md:mb-0">
+					<h3 class="{{footerHeadingClasses}}">About</h3>
+					{{typographyMacros.separator()}}
+					<p class="text-sm">D&amp;J Roofing and Construction, LLC provides quality construction and roofing services for residential homes in Nappanee, Indiana and throughout the Michiana region.</p>
+					{% set careersPage = craft.entries.section('pages').id('4876').one()%}
+					{% if careersPage %}
+						<p class="text-sm">D&amp;J Roofing is currently hiring:</p>
+						<p class="mb-0">
+							<a href="{{careersPage.url}}" class="button tiny hollow white mb-0">See All Job Openings</a>
+						</p>
+					{% endif %}
+				</div>
+
+				{% set servicesPage = craft.entries.section('pages').id('4506').one() %}
+				{% set servicesSection = craft.entries({
+					section: 'pages',
+					descendantOf: servicesPage
+				}).all() %}
+				{% if servicesSection|length %}
+				<div class="mb-6 md:mb-0">
+					<h3 class="{{footerHeadingClasses}}">Services</h3>
+					{{typographyMacros.separator()}}
+					<ul class="list-none m-0 p-0">
+						{% nav child in servicesSection %}
+							<li class="m-0 p-0 list-none {% if child.level == 2 %}my-2{% endif %}">
+								<a href="{{child.url}}" class="block text-brand-navy-100 text-sm {% if child.level == 2 %}uppercase font-bold{% endif %}">{{child.title}}</a>
+								{% ifchildren %}
+									<ul class="m-0 p-0 pb-2 list-none">
+										{% children %}
+									</ul>
+								{% endifchildren %}
+							</li>
+						{% endnav %}
+					</ul>
+				</div>
+				{% endif %}
+
+
+				<div class="mb-6 md:mb-0">
+					<h3 class="{{footerHeadingClasses}}">Contact</h3>
+					{{typographyMacros.separator()}}
+					<a href="tel:{{ seomatic.site.identity.genericTelephone }}" class="block text-xl text-brand-gold-400 font-extrabold">{{ seomatic.site.identity.genericTelephone }}</a>
+					<a href="mailto:{{ seomatic.site.identity.genericEmail }}" class="block text-sm text-brand-gold-200 font-medium">{{ seomatic.site.identity.genericEmail }}</a>
+				</div>
+
+				<div class="mb-6 md:mb-0">
+					<h3 class="{{footerHeadingClasses}}">Follow D&amp;J</h3>
+					{{typographyMacros.separator()}}
+					{% if seomatic.site.sameAsLinks["facebook"]["url"] %}
+						<a class="flex items-center mb-4 text-brand-gold-400" href="{{ seomatic.site.sameAsLinks["facebook"]["url"] }}" target="_blank">
+							{{ svg('@webroot/assets/svg/social-facebook.svg')|attr({class:'block w-8 h-8 mr-2'})|append('<title>Facebook</title>', 'replace') }}
+							<span class="flex-1">Find us on Facebook</span>
+						</a>
+					{% endif %}
+					<a class="flex items-center mb-4 text-brand-gold-400" href="https://www.google.com/search?client=firefox-b-1-d&q=d+and+j+roofing+and+construction+indiana#lrd=0x8816bb80fa08f15b:0x8cd47cd6522e486,3,,," target="_blank">
+						{{ svg('@webroot/assets/svg/review.svg')|attr({class:'block w-8 h-8 mr-2'})|append('<title>Review Us</title>', 'replace') }}
+						<span class="flex-1">Review us on Google!<span>
+					</a>
+					<a class="block" href="https://www.bbb.org/us/in/nappanee/profile/roofing-contractors/d-j-roofing-construction-llc-0352-90105707" target="_blank">
+						<img data-src="{{craft.app.config.general.theme.assetsImages}}bbb-horiz.svg" alt="D&J is accredited by the Better Business Bureau" class="block w-40 lazyload">
+					</a>
+				</div>
+			</div>
+
+			<a class="block">
+				{{ svg('@webroot/assets/images/dj-web-logo.svg')|attr({class:'block mx-auto text-white w-48 md:w-64 h-auto opacity-80'})|append('<title>D&J Roofing and Contruction</title>', 'replace') }}
+			</a>
+
+			<address class="uppercase text-xs not-italic p-8 text-center text-white opacity-50">
+				{{siteName}}<br>
+				{{ seomatic.site.identity.genericStreetAddress }}<br>
+				{{ seomatic.site.identity.genericAddressLocality }}, {{ seomatic.site.identity.genericAddressRegion }} {{ seomatic.site.identity.genericPostalCode }}<br>
+				Phone: {{ seomatic.site.identity.genericTelephone }}
+			</address>
+
+			<p class="text-center text-xs tracking-widest text-white opacity-50">&copy;{{ now|date('Y') }} {{ siteName }}, all rights reserved.</p>
+
+		</footer>
+
+	</div>{# - Off Canvas Content  #}
+	</div>{# - Off Canvas Wrapper  #}
+
+	{# - Javascript ----------------------
+	 # In practice, defer is used for scripts that need the whole DOM and/or their relative execution order is important. And async is used for independent scripts, like counters or ads. And their relative execution order does not matter.
+	#}
+	<script src="/assets/js/theme.js{% if not craft.app.config.general.devMode %}?v={{now|date("U")}}{% endif %}" defer></script>
+
+	{# - Other Page Specfic Javascript ---------------------- #}
+	{% block bodyJs %}{% endblock %}
+
+</body>
+</html>
+{% endcacheflag %}

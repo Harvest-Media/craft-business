@@ -1,0 +1,27 @@
+
+{# Flash Success #}
+{% if form.submittedSuccessfully %}
+    <div class="callout success" data-closable>
+        <h5>{{ successMessage|t }}</h5>
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}
+
+{# General Error Handling #}
+{% if not form.valid %}
+    <div class="callout alert" data-closable>
+        {{ errorMessage|t }}
+        {% if form.errors|length %}
+            <ul>
+                {% for error in form.errors %}
+                    <li>{{ error|t }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+{% endif %}

@@ -1,0 +1,144 @@
+{% if entry.contentBlocks|length %}
+
+	{% for block in entry.contentBlocks.all() %}
+		{% switch block.type %}
+
+			{% case "text" %}
+				{% if block.text %}
+						{{ block.text }}
+				{% endif %}
+
+
+			{% case "quote" %}
+				{% if block.quoteText %}
+						<blockquote>
+							{{ block.quoteText}}
+
+							{% if block.quoteAuthor %}<p><cite>{{ block.quoteAuthor }}</cite></p>{% endif %}
+						</blockquote>
+				{% endif %}
+
+
+			{% case "heading" %}
+				{% if block.headingText %}
+					<div class="">
+						<{{ block.headingLevel }}>{{ block.headingText|raw }}</{{ block.headingLevel }}>
+					</div>
+				{% endif %}
+
+
+			{% case "separator" %}
+				<div class="">
+					<hr class="block mx-auto w-1/2 opacity-50">
+				</div>
+
+
+			{% case "callout" %}
+				{% if block.calloutText %}
+					<div class="callout border-0 border-l-4">
+						{{block.calloutText}}
+					</div>
+				{% endif %}
+
+
+			{% case "image" %}
+				{% if block.image|length %}
+
+						{% set imageTag = '<img src="' ~ block.image[0].url('scaleLarge') ~ '" class="block" alt="' ~ block.imageAltText ~ '">' %}
+
+						{% if block.imageBorder %}
+							<div class="thumbnail bg-white p-2">
+						{% endif %}
+
+								{% if block.imageLinkit %}
+									<a href="{{block.imageLinkit.url}}">{{imageTag|raw}}</a>
+								{% else %}
+									{{imageTag|raw}}
+								{% endif %}
+
+							{% if block.imageCaption %}
+							<div class="text-xs pt-8 pb-4 text-gray-600 text-center">{{ block.imageCaption }}</div>
+							{% endif %}
+
+					{% if block.imageBorder %}
+						</div>
+					{% endif %}
+
+				{% endif %}
+
+
+				{% case "gallery" %}
+					{% if block.images|length %}
+						<div class="grid-x grid-padding-x grid-padding-y small-up-1 medium-up-2 large-up-3 align-top jsGallery">
+							{% for image in block.images.all() %}
+
+								{% set itemSrc = '' %}
+								{% set itemBorderClass = '' %}
+
+								{% if block.hideImageBorders %}
+									{% set itemSrc = image.url('scaleLarge') %}
+								{% else %}
+									{% set itemBorderClass = ' thumbnail' %}
+									{% set itemSrc = image.url('cropAndScaleMedium') %}
+								{% endif %}
+
+								<div class="cell text-center">
+									<a href="{{image.url('scaleLarge')}}" class="block text-center {{itemBorderClass}} jsGalleryItem">
+										<img class="block" src="{{itemSrc}}" alt="{{image.alt}}">
+									</a>
+								</div>
+
+							{% endfor %}
+						</div>
+				{% endif %}
+
+
+			{% case "videoEmbed" %}
+				{% if block.videoEmbedCode %}
+					<div class="responsive-embed widescreen">
+						{{ block.videoEmbedCode|raw }}
+					</div>
+				{% endif %}
+
+
+			{% case "button" %}
+				{% if block.buttonLinkit %}
+					{% set attributes = {
+						class: 'button large'
+					} %}
+					<p>
+						{{ block.buttonLinkit.link(attributes) }}
+					</p>
+				{% endif %}
+
+
+			{% case "accordion" %}
+				{% if block.accordionText|length %}
+					<ul class="accordion" data-accordion data-allow-all-closed="true">
+					{% for panel in block.accordionText %}
+						<li class="accordion-item" data-accordion-item>
+							<a href="#" class="accordion-title font-bold">{{ panel.heading }}</a>
+							<div class="accordion-content" data-tab-content>
+								<p>{{ panel.body }}</p>
+							</div>
+						</li>
+					{% endfor %}
+					</ul>
+				{% endif %}
+
+
+			{% case "embedCode" %}
+				{% if block.embedCode %}
+					<div class="mb-4">
+						{{ block.embedCode|raw }}
+					</div>
+				{% endif %}
+
+
+			{% default %}
+
+
+		{% endswitch %}
+	{% endfor %}
+
+{% endif %}

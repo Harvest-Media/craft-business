@@ -1,0 +1,63 @@
+{% import '_partials/imgMacros' as imgMacros %}
+
+{% if contentBlocks|length %}
+
+	{% for block in contentBlocks %}
+		{% switch block.type %}
+
+		{# - Text ------------------------ #}
+		{% case "text" %}
+			<div class="prose-2xl mb-8">
+				{{ block.text }}
+			</div>
+
+		{# - Callout ------------------------ #}
+		{% case "callout" %}
+			<div class="mb-8 py-4 pl-12 border-solid border-gray-200 border-0 border-l-4 prose-2xl italic">
+				{{ block.text }}
+			</div>
+
+		{# - Quote ------------------------ #}
+		{% case "quote" %}
+			<div class="c-primary relative mb-8 py-4 pl-12 prose-2xl italic">
+				{{ block.text }}
+				<p class="mt-4 text-right text-lg text-gray-600">&mdash;{{ block.author }}</p>
+				<svg class="absolute block w-10 h-10 top-0 left-0 -ml-1 opacity-25" width="100pt" height="100pt" viewBox="0 0 100 100">
+					<path d="m22.738 13.727c-3.7773 0.14844-7.4688 1.2695-10.914 3.3203-5.5 3.2812-9.2773 8.2695-10.93 14.441-1.707 6.3633-0.94141 12.594 2.3477 17.926 0.011718 0.015626 0.019531 0.027344 0.027343 0.042969 3.3281 5.2109 8.5781 8.7773 15.18 10.547 1.2695 0.33984 2.9336 0.20312 4.3828 0.31641-0.75 2.5781-1.4922 4.9023-4.0859 8.0352-3.0469 3.6836-10.656 9.8906-10.656 9.8906-0.91016 0.74219-1.332 1.9297-1.0898 3.0781 0.24609 1.1445 1.1094 2.0625 2.2422 2.3672l9.3203 2.4922c0.75 0.19922 1.5469 0.11719 2.2344-0.23438 0 0 5.832-2.9688 11.977-8.8984 6.3867-6.168 10.902-15.145 13.312-24.133 2.4414-9.1094 2.3594-17.375-0.59766-24.477-2.957-7.0859-8.5352-11.961-15.902-13.934-2.2852-0.61328-4.582-0.87109-6.8477-0.78125zm52.18 0c-3.7852 0.14844-7.4883 1.2695-10.934 3.3203-5.5 3.2812-9.2812 8.2695-10.938 14.441-1.7031 6.3633-0.91406 12.594 2.375 17.926 0.007813 0.015626 0.015625 0.027344 0.027344 0.042969 3.3281 5.2109 8.5781 8.7773 15.176 10.547 1.2695 0.33984 2.9219 0.20312 4.3672 0.31641-0.75 2.5742-1.4961 4.9023-4.0859 8.0352-3.0469 3.6836-10.637 9.8906-10.637 9.8906-0.91016 0.74219-1.332 1.9297-1.0898 3.0781 0.24609 1.1445 1.1094 2.0625 2.2422 2.3672l9.3203 2.4922c0.74219 0.19531 1.5312 0.11328 2.2148-0.23438 0 0 5.832-2.9688 11.977-8.8984 6.3867-6.168 10.922-15.145 13.328-24.133 2.4414-9.1094 2.3398-17.375-0.62109-24.477-2.9531-7.0859-8.5039-11.961-15.867-13.934-2.2891-0.61328-4.5859-0.87109-6.8555-0.78125z"/>
+				</svg>
+			</div>
+
+		{# - Image ------------------------ #}
+		{% case "image" %}
+		    <figure class="{% if block.style == 'border' %}border-solid border-gray-50 border-8 shadow-lg {% endif %}mb-8 lazyload">
+		  		<img {{ imgMacros.srcset(block.image[0]) }} alt="{{block.imageAltText}}" class="block lazyload">
+				{% if block.caption %}<figcaption class="text-center text-sm py-3">{{block.caption}}</figcaption>{% endif %}
+		  	</figure>
+
+		{# - Feature Image ------------------------ #}
+		{% case "imageText" %}
+			<div class="flex flex-wrap">
+				<div class="w-full sm:w-1/2 {% if block.imagePosition == 'right' %}sm:order-2{% endif %}">
+					<figure class="{% if block.style == 'border' %}border-solid border-gray-50 border-8 shadow-lg {% endif %}mb-8 lazyload">
+						<img {{ imgMacros.srcset(block.image[0]) }} alt="{{block.imageAltText}}" class="block lazyload">
+					</figure>
+				</div>
+				<div class="w-full sm:w-1/2 sm:px-4 {% if block.imagePosition == 'right' %}sm:order-1{% endif %} prose-2xl">
+					{{block.text}}
+				</div>
+			</div>
+
+		{# - Video ------------------------ #}
+		{% case "videoEmbed" %}
+			<div class="responsive-embed widescreen mb-8">
+				{{ block.embedCode|raw }}
+			</div>
+
+		{# - HTML ------------------------ #}
+		{% case "html" %}
+			{{ block.html|raw }}
+
+		{% endswitch %}
+	{% endfor %}
+
+{% endif %}

@@ -1,0 +1,154 @@
+field: b3e1c9f3-7e40-4ec9-9d9d-96fa163a671c
+fieldLayouts:
+  05211cbb-92d6-4528-a3cf-a6a9d8b29cab:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 8ebe90b3-8e91-46f9-96dc-06ff6f471a49
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 41531fb7-c36b-4fca-ba83-8da488093316
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 97e7ae49-b984-43a3-b5b6-4194bb89c4a4
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 1b03f0b6-321b-41b6-828f-6a2d11846074
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  1b03f0b6-321b-41b6-828f-6a2d11846074:
+    contentColumnType: string
+    fieldGroup: null
+    handle: style
+    instructions: ''
+    name: Style
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Plain
+            -
+              - value
+              - plain
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - Border
+            -
+              - value
+              - border
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  41531fb7-c36b-4fca-ba83-8da488093316:
+    contentColumnType: text
+    fieldGroup: null
+    handle: imageAltText
+    instructions: 'Hidden text for search engines.'
+    name: 'Alt Text'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  8ebe90b3-8e91-46f9-96dc-06ff6f471a49:
+    contentColumnType: string
+    fieldGroup: null
+    handle: image
+    instructions: ''
+    name: Image
+    searchable: true
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:1fb0d576-2907-4fc8-abd0-0f8bc47b36ff'
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: 'Choose Image'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: true
+      singleUploadLocationSource: 'volume:1fb0d576-2907-4fc8-abd0-0f8bc47b36ff'
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: true
+      validateRelatedElements: false
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  97e7ae49-b984-43a3-b5b6-4194bb89c4a4:
+    contentColumnType: text
+    fieldGroup: null
+    handle: caption
+    instructions: 'Add an optional caption.'
+    name: Caption
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: text
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: image
+name: Image
+sortOrder: 4

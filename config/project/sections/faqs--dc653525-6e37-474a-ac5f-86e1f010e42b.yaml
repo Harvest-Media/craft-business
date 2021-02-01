@@ -1,0 +1,26 @@
+enableVersioning: false
+handle: faqs
+name: FAQs
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  ae98859a-dab4-4af3-b70d-780ede8c6184:
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: null
+  uid: 167f475b-d08b-44ba-884b-319a9e68aef0
+type: structure

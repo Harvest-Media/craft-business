@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: d746d403-6972-4b7b-bab1-bd0fda3762a8
+handle: portfolioCategory
+instructions: ''
+name: 'Portfolio Category'
+searchable: false
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: 'Select A Category'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:b28c9ddb-4cdd-41a9-a12e-d16883b3b0ff'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries

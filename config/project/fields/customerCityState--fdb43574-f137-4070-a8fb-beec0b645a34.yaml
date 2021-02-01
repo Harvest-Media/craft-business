@@ -1,0 +1,18 @@
+contentColumnType: text
+fieldGroup: d746d403-6972-4b7b-bab1-bd0fda3762a8
+handle: customerCityState
+instructions: ''
+name: 'Customer City & State'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: ''
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

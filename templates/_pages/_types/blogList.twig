@@ -1,0 +1,53 @@
+{% extends "_layouts/default" %}
+{% import "_partials/imgMacros" as imgMacros %}
+{% import "_partials/blogMacros" as blogMacros %}
+
+{% block content %}
+
+	<div class="mx-auto max-w-2xl">
+		{{entry.body}}
+		<hr class="mx-auto w-1/2 opacity-50">
+	</div>
+
+	{# - Categories ---------------------- #}
+	{% set categories = craft.entries({
+		section: 'blogCategories'
+	}).all() %}
+	{% if categories|length %}
+	<ul class="menu justify-center">
+		<li class="menu-text">Topics:</li>
+		{% nav category in categories %}
+		<li>
+			<strong><a href="{{ category.url }}">{{ category.title }}</a></strong>
+			{% ifchildren %}
+				<ul>
+				{% children %}
+				</ul>
+			{% endifchildren %}
+		</li>
+		{% endnav %}
+	</ul>
+	{% endif %}
+
+	{# - Posts ---------------------- #}
+	{% set posts = craft.entries({
+		section: 'blog',
+		with: ['image'],
+		limit: 12,
+		orderBy: 'postDate desc'
+	}) %}
+
+	{% paginate posts as entries %}
+
+	{% if posts|length %}
+		<div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 my-6">
+		{% for entry in entries %}
+			{{blogMacros.articleCard(entry, 'h2')}}
+		{% endfor %}
+		</div>
+	{% endif %}
+
+	{# - Pagination ------------------------ #}
+    {% include "_partials/pagination" %}
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "_layouts/default" %}
+{% import "_partials/imgMacros" as imgMacros %}
+{% import "_partials/blogMacros" as blogMacros %}
+
+{# Get Posts by Month #}
+{% set filter = craft.app.request.getSegment(2) %}
+{% set filterSlug = craft.app.request.getSegment(3) %}
+
+{% if filter is defined and filterSlug is defined %}
+
+	{% if filter == 'month' %}
+		{% set filterYear = craft.app.request.getSegment(3)  %}
+		{% set filterMonth = craft.app.request.getSegment(4) %}
+		{% set filterDate = date(filterYear ~ '-' ~ filterMonth) %}
+		{% set pageHeading = 'Posts from ' ~ filterDate|date('F, Y') %}
+	{% endif %}
+
+{% endif %}
+
+{% block content %}
+
+	{# Get Posts by Month #}
+	{% if filterDate is defined and filterDate != '' %}
+
+		{% set posts = craft.entries({
+			section: 'blog',
+			with: ['image', 'headerImage'],
+			limit: 12,
+			after: filterDate,
+			before: filterDate|date_modify("+1 month"),
+			orderBy: 'postDate desc'
+		}) %}
+
+		{# - Posts ---------------------- #}
+		{% paginate posts as entries %}
+		{% if posts|length %}
+			<div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 my-6">
+			{% for entry in entries %}
+				{{blogMacros.articleCard(entry, 'h2')}}
+			{% endfor %}
+			</div>
+		{% endif %}
+
+		{# - Pagination ------------------------ #}
+		{% include "_partials/pagination" %}
+	
+	{% endif %}
+
+{% endblock %}

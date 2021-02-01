@@ -1,0 +1,29 @@
+{#
+
+<div class="sidebarQuickLinks">
+	{% set sidebarEntry = craft.entries.section('sidebar').limit(1).one() %}
+	{% if sidebarEntry.sidebarQuickLinks is iterable %}
+		{% for link in sidebarEntry.sidebarQuickLinks.all() %}
+			{% if link.linkPageLink[0].url %}
+			<p><a href="{{ link.linkPageLink[0].url }}"><i class="fi-{{ link.linkIcon }} sidebarSocial__icon"></i> {{ link.linkTitle }}</a></p>
+
+				{% if loop.last %}
+					<hr>
+				{% endif %}
+
+			{% endif %}
+
+		{% endfor %}
+	{% endif %}
+</div>
+
+<div class="sidebarSocial">
+	{% if socialMedia.facebookUrl %}
+		<p><a href="{{ socialMedia.facebookUrl }}"><i class="fi-social-facebook sidebarSocial__icon facebookColor"></i> Friend Us</a></p>
+	{% endif %}
+	{% if socialMedia.twitterUrl %}
+		<p><a href="{{ socialMedia.twitterUrl }}"><i class="fi-social-twitter sidebarSocial__icon twitterColor"></i> Follow Us</a></p>
+	{% endif %}
+</div>
+
+#}

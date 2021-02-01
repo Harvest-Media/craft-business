@@ -1,0 +1,171 @@
+field: 38add3df-2b87-4924-a5a7-8248193d55c7
+fieldLayouts:
+  c02e2b5c-1767-46ce-b1a9-1b5d0f8dab5e:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 46804d7f-ad96-4dcb-a9d5-8af7f22876ac
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: b95b8bcc-6f64-4280-8535-e5843752496b
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: f1c2f900-7f69-4aba-92a8-74c9723206d4
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: f3e2054e-6344-4eef-bf88-5ffb0ffaaadb
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: 39ad41a6-2443-4ea8-a500-07dbf7f08b6e
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+        name: Content
+        sortOrder: 1
+fields:
+  39ad41a6-2443-4ea8-a500-07dbf7f08b6e:
+    contentColumnType: string
+    fieldGroup: null
+    handle: style
+    instructions: ''
+    name: Style
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Light
+            -
+              - value
+              - light
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Dark
+            -
+              - value
+              - dark
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  46804d7f-ad96-4dcb-a9d5-8af7f22876ac:
+    contentColumnType: text
+    fieldGroup: null
+    handle: preHeading
+    instructions: ''
+    name: Pre-Heading
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  b95b8bcc-6f64-4280-8535-e5843752496b:
+    contentColumnType: text
+    fieldGroup: null
+    handle: heading
+    instructions: ''
+    name: Heading
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  f1c2f900-7f69-4aba-92a8-74c9723206d4:
+    contentColumnType: text
+    fieldGroup: null
+    handle: subHeading
+    instructions: ''
+    name: Sub-Heading
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: ''
+      columnType: null
+      initialRows: '4'
+      multiline: ''
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+  f3e2054e-6344-4eef-bf88-5ffb0ffaaadb:
+    contentColumnType: string
+    fieldGroup: null
+    handle: category
+    instructions: 'If no category is selected all portfolio projects will be shown.'
+    name: 'Filter by Category'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      limit: ''
+      localizeRelations: false
+      selectionLabel: ''
+      showSiteMenu: true
+      source: null
+      sources:
+        - 'section:b28c9ddb-4cdd-41a9-a12e-d16883b3b0ff'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: gallery
+name: Gallery
+sortOrder: 5

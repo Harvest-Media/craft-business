@@ -1,0 +1,87 @@
+field: 38add3df-2b87-4924-a5a7-8248193d55c7
+fieldLayouts:
+  b60e37d7-c08c-4f64-a106-a26d89f8c12e:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 63b9b704-a0af-4ec4-9f30-f92de673a0ef
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+          -
+            fieldUid: 4241352b-ad08-4d28-926c-c900509e77c2
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 25
+        name: Content
+        sortOrder: 1
+fields:
+  4241352b-ad08-4d28-926c-c900509e77c2:
+    contentColumnType: string
+    fieldGroup: null
+    handle: style
+    instructions: ''
+    name: Style
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - Light
+            -
+              - value
+              - light
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - Dark
+            -
+              - value
+              - dark
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  63b9b704-a0af-4ec4-9f30-f92de673a0ef:
+    contentColumnType: string
+    fieldGroup: null
+    handle: pageSection
+    instructions: ''
+    name: 'Page Section'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      limit: '1'
+      localizeRelations: false
+      selectionLabel: 'Choose A Section'
+      showSiteMenu: true
+      source: null
+      sources:
+        - 'section:a2f60f6b-d3ce-4344-b100-2375669af477'
+      targetSiteId: null
+      validateRelatedElements: false
+      viewMode: null
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Entries
+handle: pageSection
+name: 'Page Section'
+sortOrder: 6

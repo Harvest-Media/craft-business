@@ -1,0 +1,40 @@
+field: b3e1c9f3-7e40-4ec9-9d9d-96fa163a671c
+fieldLayouts:
+  6e00d2ed-1a2e-4070-ba57-bed57de3acde:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: f3342e90-4231-4053-b78c-d9936038d02c
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  f3342e90-4231-4053-b78c-d9936038d02c:
+    contentColumnType: text
+    fieldGroup: null
+    handle: embedCode
+    instructions: 'Paste your video embed code from YouTube or Vimeo here. Usually looks like <iframe>.....'
+    name: 'Video Embed Code'
+    searchable: true
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: '1'
+      columnType: text
+      initialRows: '6'
+      multiline: '1'
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: videoEmbed
+name: 'Video Embed'
+sortOrder: 6

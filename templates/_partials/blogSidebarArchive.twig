@@ -1,0 +1,63 @@
+{% set filterHeadingClasses = 'font-sans text-base font-bold text-gray-800' %}
+{% set filterlistClasses = 'list-none m-0 mb-8 text-sm' %}
+
+{# Date #}
+{# this code will loop over only the months that have blog, since the very first blog entry #}
+{#
+	for the past 7 months of entries
+	.after("now"|date()|date_modify("-7 months")|date('Y-m'))
+#}
+{% set firstBlogEntryEver = craft.entries.section('blog').orderBy('postDate asc').one() %}
+
+{% if firstBlogEntryEver|length %}
+
+{% set lastFewMonthsBlog = craft
+	.entries
+	.section('blog')
+	.limit(null)
+	.after(firstBlogEntryEver.postDate)
+	.before(date('now'))
+	.all()
+%}
+{% set lastFewMonthsBlogByMonth = lastFewMonthsBlog | group("postDate|date('F Y')") %}
+
+<h2 class="{{filterHeadingClasses}}">Recent Posts</h2>
+<ul class="{{filterlistClasses}}">
+	{% for post in lastFewMonthsBlog|slice(0,4) %}
+		<li class="mb-2">
+			<a href="{{ post.url }}">{{ post.title }}</a>
+		</li>
+	{% endfor %}
+</ul>
+
+
+{# - Categories ---------------------- #}
+{% set categories = craft.entries({
+	section: 'blogCategories'
+}).all() %}
+{% if categories|length %}
+<h2 class="{{filterHeadingClasses}}">Topics</h2>
+<ul class="{{filterlistClasses}}">
+	{% for category in categories %}
+		<li class="mb-2">
+			<a href="{{ category.url }}">{{ category.title }}</a>
+		</li>
+	{% endfor %}
+</ul>
+{% endif %}
+
+
+<h2 class="{{filterHeadingClasses}}">Archives</h2>
+<ul class="{{filterlistClasses}}">
+
+	{% for month, entriesInMonth in lastFewMonthsBlogByMonth %}
+		{% set firstEntry = entriesInMonth[0] %}
+		{% set archiveDate = firstEntry.postDate %}
+		<li class="mb-2">
+			<a href="/posts/month/{{ archiveDate|date('Y') }}/{{ archiveDate|date('m') }}">{{ archiveDate|date("F Y") }}</a>
+		</li>
+	{% endfor %}
+
+</ul>
+
+{% endif %}

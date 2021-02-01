@@ -1,0 +1,99 @@
+{% extends "_layouts/default" %}
+{% import "_partials/imgMacros" as imgMacros %}
+{% import "_partials/typographyMacros" as typographyMacros %}
+
+{% block content %}
+
+    {% if entry.bodyBlocks|length %}
+        {% set bodyBlocks = entry.bodyBlocks.all() %}
+        {% include '_partials/bodyBlocks' %}
+    {% endif %}
+
+    {#
+        Theorectically the "testimonials" variable in the dandj site builder could conflict with the variable
+        here. Thus, the variable here is named homepageTestimonials.
+    #}
+    {% set homepageTestimonials = craft.entries({
+        section: ['testimonials'],
+        with: ['image'],
+        limit: 2,
+        orderBy : 'postDate desc'
+    }).all() %}
+
+    {% if homepageTestimonials | length %}
+
+    <div class="my-12">
+        <h2 class="mb-6 text-xl text-center font-sans font-extrabold uppercase tracking-wider">What Customers Say</h2>
+        <hr class="max-w-xl mx-auto">
+        <div class="max-w-5xl mx-auto md:grid md:grid-cols-2 md:gap-x-4 md:gap-y-4">
+
+        {% for testimonial in homepageTestimonials %}
+        <div class="flex mb-4 p-4">
+            {# {% if testimonial.image | length %}{{ testimonial.image[0].url }}{% endif %} #}
+
+            <div class="w-12 mr-2">
+                {{ svg('@webroot/assets/svg/quote-mark.svg')|attr({class:'block w-12 h-12 -ml-2 -mt-2 text-brand-gold-200'})|append('<title>Quote</title>', 'replace') }}
+            </div>
+
+            <blockquote class="prose prose-xl">
+                {{ testimonial.body }}
+                <cite class="text-black">{{ testimonial.title }}{% if testimonial.customerCityState | length %} / {{ testimonial.customerCityState }}{% endif %}</cite>
+            </blockquote>
+        </div>
+        {% endfor %}
+
+        </div>
+    </div>
+
+    {% endif %}
+
+
+    {#
+        The D&J Difference Section
+        The PreHeading and Heading are hard coded
+    #}
+    <div class="flex flex-wrap max-w-5xl mx-auto my-6 md:items-center">
+        <div class="w-full h-96 mb-4 sm:w-5/12">
+            <img class="block w-full h-full object-contain object-center rounded-sm overflow-hidden lazyload" data-src="{{craft.app.config.general.theme.assetsImages}}before-and-after.jpg" alt="Roof replacement, before and after">
+        </div>
+        <div class="w-full sm:w-7/12 sm:px-4 md:px-8 md:pt-6">
+            <h2 class="">
+                <span class="block mb-2 text-base md:text-xl leading-tight font-normal font-sans uppercase">The D&J</span>
+                <span class="block mb-2 text-3xl md:text-6xl font-extrabold">Difference</span>
+            </h2>
+            {{typographyMacros.separator()}}
+            <div class="prose prose-xl">
+                {{ entry.body }}
+            </div>
+        </div>
+    </div>
+
+    {# Logo Cloud #}
+    {% set logocloud = [
+        {
+            url: craft.app.config.general.theme.assetsImages ~ 'neh-logo.png',
+            alt: 'a New Energy Homes Contractor'
+        },
+        {
+            url: craft.app.config.general.theme.assetsImages ~ 'iba-logo.png',
+            alt: 'member of Indian Builders Association'
+        },
+        {
+            url: craft.app.config.general.theme.assetsImages ~ 'nfba-logo.png',
+            alt: 'member of National Frame Builders Association'
+        },
+    ]
+    %}
+    <div class="bg-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center">
+                {% for logo in logocloud %}
+                    <div class="px-8">
+                        <img class="block w-40 h-24 object-contain object-center lazyload" data-src="{{logo.url}}" alt="{{logo.alt}}">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

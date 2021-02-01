@@ -1,0 +1,35 @@
+{#
+They have changed the scope of macros.  They have to be included in each invidual scope
+that they are used in.
+#}
+{% import "_partials/imgMacros.twig" as macros  %}
+
+{% if pageSection.pageSectionBlocks | length %}
+
+    {% for sectionBlock in pageSection.pageSectionBlocks.all()  %}
+
+        {% switch sectionBlock.type %}
+
+            {% case "card" %}
+
+                <div class="">
+
+                    {% if sectionBlock.image | length %}
+                        {{ sectionBlock.image[0].url }}
+                    {% endif %}
+
+                    {{ sectionBlock.heading }}
+
+                    {{ sectionBlock.body }}
+
+                    {{ sectionBlock.callToAction }}
+
+                </div>
+
+            {% default %}
+
+        {% endswitch %}
+
+    {% endfor %}
+
+{% endif %}

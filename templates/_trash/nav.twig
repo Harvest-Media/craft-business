@@ -1,0 +1,16 @@
+{% set navigation = craft.entries.section('pages').all() %}
+<nav>
+    <ul id="nav">
+        {% nav page in navigation %}
+            <li class="level_{{ page.level }}{% if entry is defined and (page.isAncestorOf(entry) or (entry.id == page.id)) %} current{% endif %}">
+                {{ page.getLink() }}
+
+                {% ifchildren %}
+                    <ul>
+                        {% children %}
+                    </ul>
+                {% endifchildren %}
+            </li>
+        {% endnav %}
+    </ul>
+</nav>

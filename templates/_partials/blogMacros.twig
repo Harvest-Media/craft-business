@@ -1,0 +1,82 @@
+{% macro articleCard(entry, headingLevel) %}
+{%- set headingLevel = headingLevel | default('h2') -%}
+<article>
+	{% import "_partials/imgMacros" as imgMacros %}
+	{% if entry.image|length %}
+	  <img {{imgMacros.srcset(entry.image[0])}} class="mb-4 lazyload jsClickForHref" alt="Article - {{entry.title}}" data-href="{{entry.url}}">
+	{% endif %}	
+	<div class="relative mx-3 -mt-12 mb-4 p-2 pb-0 border-solid border-gray-200 border-0 border-t bg-white">
+		<{{headingLevel}} class="text-lg normal-case text-brand-green-600 jsClickForHref" data-href="{{entry.url}}">{{entry.title}}</{{headingLevel}}>
+		<p class="text-xs mb-2 italic opacity-80">Posted {{entry.postDate|date("M j 'y")}}</p>
+		<p class="text-sm mb-4 leading-normal">{{entry.preview}}</p>
+		<p class="mb-0"><a href="{{entry.url}}" class="button hollow small mb-0">View Article</a></p>
+	</div>
+</article>
+{% endmacro %}
+
+
+
+
+{#
+{% macro articleRow(entry) %}
+<article>
+
+	{% if entry.image|length %}
+		<div class="">
+			<a href="{{ entry.url }}">
+				<img {{imgMacros.srcset(entry.image[0])}} class="lazyload" alt="{{ entry.title }}">
+			</a>
+		</div>
+	{% endif %}
+
+	<h2 class=""><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
+	<p class="">On {{ entry.postDate.format('F j, Y') }} </a> by {{entry.author}}</p>
+
+	<p>
+		{% if entry.preview is empty %}
+			{{ entry.body | chop(unit='w', limit=15, append='...') }}
+		{% else %}
+			{{ entry.preview }} &hellip;
+		{% endif %}
+		<a href="{{ entry.url }}">read more</a>
+	</p>
+
+	{% if not loop.last %}
+		<hr class="" />
+	{% endif %}
+
+</article>
+{% endmacro %}
+#}
+
+
+
+
+
+{#
+{% macro articleList(entry, loop) %}
+
+<!-- in case no loop is passed in https://twig.symfony.com/doc/3.x/tags/for.html#the-loop-variable -->
+{% set loop = loop | default({'index0':0,'index':1}) %}
+
+<article>
+  <div class="grid-x grid-padding-x grid-padding-y">
+    <div class="cell medium-12 {{ cycle(["", "medium-order-2"], loop.index0) }}">
+      <img src="{{entry.image[0].url()}}" class="thumbnail jsClickForHref" alt="Article - {{entry.title}}" data-href="{{entry.url}}">
+    </div>
+    <div class="cell medium-12 {{ cycle(["", "medium-order-1"], loop.index0) }}">
+      <h2 class="h6 jsClickForHref" data-href="{{entry.url}}">{{entry.title}}</h2>
+      <p class="">{{entry.shortDescription}}</p>
+      <p class="">Posted {{entry.postDate|date("M j 'y")}}</p>
+      <!--
+      {% if entry.topics|length %}
+        <strong><a href="{{entry.topics[0].url}}">{{entry.topics[0].title}}</a></strong>
+      {% endif %}
+      -->
+      <p aria-hidden="true"><a href="{{entry.url}}" class="button hollow">View Article</a></p>
+    </div>
+  </div>
+</article>
+
+{% endmacro %}
+#}

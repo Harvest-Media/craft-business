@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 7025c78b-3031-405b-9845-6889983aae90
+handle: contentBlocks
+instructions: ''
+name: 'Article Blocks'
+searchable: true
+settings:
+  contentTable: '{{%matrixcontent_contentblocks}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

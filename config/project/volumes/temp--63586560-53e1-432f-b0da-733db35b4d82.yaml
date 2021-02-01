@@ -1,0 +1,38 @@
+fieldLayouts:
+  72265c12-e6e5-4f2d-8f1b-da3f24a8a0b1:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+handle: temp
+hasUrls: false
+name: Temp
+settings:
+  path: '@web/assets/'
+sortOrder: 14
+type: craft\volumes\Local
+url: null

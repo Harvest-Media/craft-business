@@ -1,0 +1,21 @@
+---
+name: 'Email Notification Template'
+description: 'This is the template for the emails that will be sent out.'
+fromName: '{{ form.fields.name }}'
+fromEmail: '{{form.fields.emailAddress}}'
+replyTo: '{{form.fields.emailAddress}}'
+cc: null
+bcc: null
+subject: 'Website Email From: {{ form.fields.name }}'
+includeAttachments: false
+---
+<b>{{form.fields.name }}</b><br/>
+<b>{{form.fields.phoneNumber}}</b><br/>
+<b>{{form.fields.emailAddress}}</b><br/>
+<b>{{form.fields.city}}</b><br/>
+<br/>
+<p>{{form.fields.message}}</p>
+
+<hr/>
+
+<p>The following submission came in on {{ dateCreated|date('l, F j, Y \\a\\t g:ia') }}.</p>

@@ -1,0 +1,9 @@
+{% if heading is defined %}
+	{{ heading }}
+{% elseif entry is defined and entry.heading is not empty %}
+	{{ entry.heading }}
+{% elseif title is defined %}
+	{{ title }}
+{% elseif entry is defined and entry.title is not empty %}
+	{{ entry.title }}
+{% endif %}

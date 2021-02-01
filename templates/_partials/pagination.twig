@@ -1,0 +1,43 @@
+{% if paginate.totalPages > 1 %}
+
+  <div class="pagination-centered">
+    <ul class="pagination text-center">
+      <li>
+        <a href="{{ paginate.firstUrl }}" title="First Page">&lsaquo; First</a>
+      </li>
+
+      {% if paginate.prevUrl %}
+        <li class="pagination-previous">
+          <a href="{{ paginate.prevUrl }}">Previous</a>
+        </li>
+      {% endif %}
+
+      {% for page, url in paginate.getPrevUrls(5) %}
+        <li>
+          <a href="{{ url }}">{{ page }}</a>
+        </li>
+      {% endfor %}
+
+      <li class="current">
+        {{ paginate.currentPage }}{#<a href="{{ paginate.getPageUrl(paginate.currentPage) }}"></a>#}
+      </li>
+
+      {% for page, url in paginate.getNextUrls(5) %}
+        <li>
+          <a href="{{ url }}">{{ page }}</a>
+        </li>
+      {% endfor %}
+
+      {% if paginate.nextUrl %}
+        <li class="pagination-next">
+          <a href="{{ paginate.nextUrl }}">Next</a>
+        </li>
+      {% endif %}
+
+      <li>
+        <a href="{{ paginate.lastUrl }}" title="Last Page">Last &rsaquo;</a>
+      </li>
+    </ul>
+  </div>
+
+{% endif %}

@@ -1,0 +1,110 @@
+fieldLayouts:
+  87fc1129-b05c-4fe8-a123-a37e724835ab:
+    tabs:
+      -
+        elements:
+          -
+            heading: 'Page Preview'
+            type: craft\fieldlayoutelements\Heading
+          -
+            fieldUid: 7e73e940-ba83-4c57-a891-e714157ad300
+            instructions: ''
+            label: ''
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 0b0ef870-0127-4663-b045-1f00b6f700a5
+            instructions: ''
+            label: ''
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            heading: 'Page Heading'
+            type: craft\fieldlayoutelements\Heading
+          -
+            fieldUid: a5703536-4f6d-43a4-bf56-03d93e13bd8a
+            instructions: null
+            label: null
+            required: '0'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\EntryTitleField
+            warning: null
+            width: 100
+          -
+            fieldUid: 626d91be-b8e9-41e6-87c2-0a08f57d9d92
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            heading: 'Page Body'
+            type: craft\fieldlayoutelements\Heading
+          -
+            fieldUid: b93bf2da-66d5-4a57-939b-197c8904c0d2
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: ae5298d0-8399-442c-a5c6-5d45859b79af
+            instructions: ''
+            label: ''
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: b3e1c9f3-7e40-4ec9-9d9d-96fa163a671c
+            instructions: ''
+            label: 'Body Blocks'
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+handle: post
+hasTitleField: true
+name: Post
+section: 8191f809-16e3-4f5f-a8e9-7bebacf9caca
+sortOrder: 0
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

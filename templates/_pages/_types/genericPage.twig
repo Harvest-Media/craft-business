@@ -1,0 +1,10 @@
+{% extends "_layouts/default" %}
+
+{% block content %}
+
+    {% if entry.bodyBlocks|length %}
+        {% set bodyBlocks = entry.bodyBlocks.all() %}
+        {% include '_partials/bodyBlocks' %}
+    {% endif %}
+
+{% endblock %}

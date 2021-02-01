@@ -1,0 +1,132 @@
+dateModified: 1612129776
+email:
+  fromEmail: $SYSTEM_EMAIL_ADDRESS
+  fromName: $SYSTEM_EMAIL_SENDER_NAME
+  replyToEmail: $SYSTEM_EMAIL_REPLY_TO_ADDRESS
+  template: ''
+  transportSettings:
+    encryptionMethod: ssl
+    host: $SYSTEM_EMAIL_HOST_NAME
+    password: $SYSTEM_EMAIL_PASSWORD
+    port: $SYSTEM_EMAIL_PORT
+    timeout: '30'
+    useAuthentication: '1'
+    username: $SYSTEM_EMAIL_USERNAME
+  transportType: craft\mail\transportadapters\Smtp
+plugins:
+  bust:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  cache-flag:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+  express-forms:
+    edition: lite
+    enabled: true
+    schemaVersion: 1.0.1
+    settings:
+      duplicatePreventionEnabled: true
+      emailNotificationsDirectoryPath: express-forms/_notifications/
+      enhancedUI: true
+      honeypotBehaviour: simulate_success
+      honeypotEnabled: '1'
+      honeypotInputName: form_handler
+      name: null
+      recaptchaEnabled: ''
+      recaptchaLoadScript: '1'
+      recaptchaSecretKey: null
+      recaptchaSiteKey: null
+      recaptchaTheme: light
+      showErrorLogBanner: true
+  feed-me:
+    edition: standard
+    enabled: true
+    schemaVersion: 4.3.0
+  fortrabbit-object-storage:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  hmsupport:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  linkit:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.8
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  seomatic:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 3.0.9
+    settings:
+      addHrefLang: true
+      addPaginatedHreflang: true
+      addXDefaultHrefLang: true
+      cpTitlePrefix: '⚙ '
+      cspNonce: ''
+      cspScriptSrcPolicies:
+        -
+          __assoc__:
+            -
+              - policy
+              - '''self'''
+      devModeCpTitlePrefix: '&#x1f6a7;⚙ '
+      devModeTitlePrefix: '&#x1f6a7; '
+      displayAnalysisSidebar: true
+      displayPreviewSidebar: true
+      enableJsonLdEndpoint: false
+      enableMetaContainerEndpoint: false
+      enableSeoFileLinkEndpoint: false
+      environment: $SEO_ENVIRONMENT
+      generatorEnabled: false
+      headersEnabled: true
+      lowercaseCanonicalUrl: '1'
+      maxDescriptionLength: 155
+      maxTitleLength: 70
+      metaCacheDuration: 'null'
+      pluginName: SEO
+      regenerateSitemapsAutomatically: true
+      renderEnabled: true
+      separatorChar: '|'
+      sidebarDisplayPreviewTypes:
+        - google
+        - facebook
+      siteGroupsSeparate: '1'
+      siteUrlOverride: ''
+      sitemapsEnabled: true
+      socialMediaPreviewTarget: true
+      submitSitemaps: true
+  sprout-encode-email:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  trimmer:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  vz-address:
+    enabled: '1'
+    licenseKey: null
+    schemaVersion: 1.0.0
+    settings: null
+  wordsmith:
+    edition: standard
+    enabled: true
+    schemaVersion: 0.0.0.0
+system:
+  edition: pro
+  live: true
+  name: $EN_US_SITE_NAME
+  retryDuration: null
+  schemaVersion: 3.5.13
+  timeZone: America/Chicago

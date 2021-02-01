@@ -1,0 +1,74 @@
+fieldLayouts:
+  b5f0a351-2d16-4cf2-8def-f921f63bfdb3:
+    tabs:
+      -
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: ''
+            label: 'Customer Name'
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\EntryTitleField
+            warning: null
+            width: 50
+          -
+            fieldUid: fdb43574-f137-4070-a8fb-beec0b645a34
+            instructions: ''
+            label: ''
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: ae5298d0-8399-442c-a5c6-5d45859b79af
+            instructions: ''
+            label: Testimonial
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 7e73e940-ba83-4c57-a891-e714157ad300
+            instructions: ''
+            label: 'Project Feature Image'
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: f8937201-b454-4feb-9222-f3515cef03eb
+            instructions: ''
+            label: 'Link to Project'
+            required: ''
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+handle: testimonials
+hasTitleField: true
+name: Testimonials
+section: b6f588b0-c0f4-480f-8100-3c547429a05c
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -1,0 +1,87 @@
+fieldLayouts:
+  46cf8945-d049-4c46-a07b-8eb254f28966:
+    tabs:
+      -
+        elements:
+          -
+            heading: 'Page Preview'
+            type: craft\fieldlayoutelements\Heading
+          -
+            fieldUid: 7e73e940-ba83-4c57-a891-e714157ad300
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 0b0ef870-0127-4663-b045-1f00b6f700a5
+            instructions: ''
+            label: ''
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            heading: 'Page Heading'
+            type: craft\fieldlayoutelements\Heading
+          -
+            fieldUid: a5703536-4f6d-43a4-bf56-03d93e13bd8a
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            id: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\EntryTitleField
+            warning: null
+            width: 100
+          -
+            heading: 'Page Body'
+            type: craft\fieldlayoutelements\Heading
+          -
+            fieldUid: ae5298d0-8399-442c-a5c6-5d45859b79af
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            style: tip
+            tip: 'Blog posts in this category will automatically display here.'
+            type: craft\fieldlayoutelements\Tip
+        name: Content
+        sortOrder: 1
+handle: blogCategories
+hasTitleField: true
+name: 'Blog Categories'
+section: 74ab1b3c-f400-454e-802f-484f8e682ddf
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

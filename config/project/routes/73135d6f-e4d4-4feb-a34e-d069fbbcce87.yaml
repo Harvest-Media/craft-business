@@ -1,0 +1,13 @@
+siteUid: null
+sortOrder: 6
+template: _blog/_sort
+uriParts:
+  0: posts/month/
+  1:
+    - year
+    - '\d{4}'
+  3: /
+  4:
+    - month
+    - '(?:0?[1-9]|1[012])'
+uriPattern: 'posts/month/<year:\d{4}>/<month:(?:0?[1-9]|1[012])>'

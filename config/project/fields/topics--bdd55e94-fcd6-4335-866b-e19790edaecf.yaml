@@ -1,0 +1,21 @@
+contentColumnType: string
+fieldGroup: 7025c78b-3031-405b-9845-6889983aae90
+handle: topics
+instructions: ''
+name: Topics
+searchable: true
+settings:
+  allowSelfRelations: false
+  limit: ''
+  localizeRelations: false
+  selectionLabel: 'Choose Category'
+  showSiteMenu: true
+  source: null
+  sources:
+    - 'section:be3de0b5-6469-4de4-a45f-7ca0c1324b4b'
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Entries
