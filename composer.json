@@ -45,7 +45,7 @@
     "post-create-project-cmd": [
       "@php -r \"copy('.env.example', '.env');\"",
       "@composer dump-autoload -o",
-      "@php -r \"echo '\n\nChange directory into your new project and run ./harvest-setup.sh\n\n';\""
+      "@php -r \"echo '\n\nChange directory into your new project and run ./harvest-setup.sh <dbname>\n\n';\""
     ]
   }
 }
