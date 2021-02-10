@@ -3,7 +3,7 @@ enabled: true
 handle: en_us
 hasUrls: true
 language: en-US
-name: 'CraftCMS Starter Site'
+name: $EN_US_SITE_NAME
 primary: true
 siteGroup: 5ab5885b-2e56-4195-8f21-387900cee3df
 sortOrder: 1
