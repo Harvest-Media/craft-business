@@ -1,4 +1,4 @@
-dateModified: 1612129776
+dateModified: 1612978214
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SYSTEM_EMAIL_SENDER_NAME
@@ -41,14 +41,6 @@ plugins:
       recaptchaSiteKey: null
       recaptchaTheme: light
       showErrorLogBanner: true
-  feed-me:
-    edition: standard
-    enabled: true
-    schemaVersion: 4.3.0
-  fortrabbit-object-storage:
-    edition: standard
-    enabled: true
-    schemaVersion: 1.0.0
   hmsupport:
     enabled: '1'
     licenseKey: null
@@ -57,53 +49,17 @@ plugins:
   linkit:
     edition: standard
     enabled: true
+    licenseKey: 1M7QC7P7QY84PDLECATF4K3R
     schemaVersion: 1.0.8
   redactor:
     edition: standard
     enabled: true
     schemaVersion: 2.3.0
   seomatic:
-    enabled: '1'
-    licenseKey: null
+    edition: standard
+    enabled: true
+    licenseKey: 0AAK0PBFCTL0FQ01ZQHQ4RBM
     schemaVersion: 3.0.9
-    settings:
-      addHrefLang: true
-      addPaginatedHreflang: true
-      addXDefaultHrefLang: true
-      cpTitlePrefix: '⚙ '
-      cspNonce: ''
-      cspScriptSrcPolicies:
-        -
-          __assoc__:
-            -
-              - policy
-              - '''self'''
-      devModeCpTitlePrefix: '&#x1f6a7;⚙ '
-      devModeTitlePrefix: '&#x1f6a7; '
-      displayAnalysisSidebar: true
-      displayPreviewSidebar: true
-      enableJsonLdEndpoint: false
-      enableMetaContainerEndpoint: false
-      enableSeoFileLinkEndpoint: false
-      environment: $SEO_ENVIRONMENT
-      generatorEnabled: false
-      headersEnabled: true
-      lowercaseCanonicalUrl: '1'
-      maxDescriptionLength: 155
-      maxTitleLength: 70
-      metaCacheDuration: 'null'
-      pluginName: SEO
-      regenerateSitemapsAutomatically: true
-      renderEnabled: true
-      separatorChar: '|'
-      sidebarDisplayPreviewTypes:
-        - google
-        - facebook
-      siteGroupsSeparate: '1'
-      siteUrlOverride: ''
-      sitemapsEnabled: true
-      socialMediaPreviewTarget: true
-      submitSitemaps: true
   sprout-encode-email:
     enabled: '1'
     licenseKey: null
@@ -119,14 +75,10 @@ plugins:
     licenseKey: null
     schemaVersion: 1.0.0
     settings: null
-  wordsmith:
-    edition: standard
-    enabled: true
-    schemaVersion: 0.0.0.0
 system:
   edition: pro
   live: true
   name: $EN_US_SITE_NAME
   retryDuration: null
-  schemaVersion: 3.5.13
+  schemaVersion: 3.6.1
   timeZone: America/Chicago
