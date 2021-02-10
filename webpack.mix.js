@@ -1,7 +1,7 @@
 const mix = require("laravel-mix");
 require("dotenv").config();
 
-let devProxy = process.env.BROWSERSYNC_PROXY_URL || "http://dandjroofingandconstruction.test";
+let devProxy = process.env.EN_US_SITE_DEV_URL || "http://craft-business.test";
 
 /*
  |--------------------------------------------------------------------------
@@ -28,31 +28,30 @@ mix
       "templates/**/*.twig",
       "templates/**/*.html",
       "public/assets/css/theme.css",
-      "public/assets/js/theme.js"
-    ]
+      "public/assets/js/theme.js",
+    ],
   })
 
   /* Configure Larval Mix with the options we want.  */
   .options({
-
     processCssUrls: false, // default true
 
     /* Configure Mix's built in PostCSS to use the plugins we want including tailwindcss and purgecss */
     postCss: [
-      require("tailwindcss")("tailwind.config.js")
+      require("tailwindcss")("tailwind.config.js"),
       //require("autoprefixer")()
     ],
     clearConsole: mix.inProduction() ? true : false,
     cssNano: {
-      discardComments: { removeAll: true }
-    }
+      discardComments: { removeAll: true },
+    },
   })
 
   /* Process SCSS and PostCSS */
   .sass("src/css/theme.scss", "public/assets/css/", {
     sassOptions: {
-      outputStyle: "expanded"
-    }
+      outputStyle: "expanded",
+    },
   })
 
   /* JS */

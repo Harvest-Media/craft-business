@@ -4,21 +4,32 @@
   "description": "Harvest Media Craft Business Starter",
   "license": "UNLICENSED",
   "private": true,
-  "author": "Mike Moreau (Harvest Media)",
+  "author": {
+    "name": "Mike Moreau (Harvest Media)",
+    "email": "dev@harvestmedia.com",
+    "url": "https://www.harvestmedia.com"
+  },
+  "contributors": [
+    {
+      "name": "Nathan Bate (Harvest Media)",
+      "email": "dev@harvestmedia.com",
+      "url": "https://www.harvestmedia.com"
+    }
+  ],
   "devDependencies": {
-    "@tailwindcss/typography": "^0.3.1",
-    "browser-sync": "^2.26.13",
+    "@tailwindcss/typography": "^0.4.0",
+    "browser-sync": "^2.26.14",
     "browser-sync-webpack-plugin": "^2.3.0",
     "cross-env": "^7.0.3",
     "foundation-sites": "^6.6.3",
     "jquery": "^3.5.1",
-    "laravel-mix": "^6.0.6",
+    "laravel-mix": "^6.0.11",
     "lazysizes": "^5.3.0",
     "magnific-popup": "^1.1.0",
-    "postcss": "^8.2.2",
-    "sass": "^1.32.0",
-    "sass-loader": "^10.1.0",
-    "tailwindcss": "^2.0.2"
+    "postcss": "^8.2.5",
+    "sass": "^1.32.7",
+    "sass-loader": "^11.0.1",
+    "tailwindcss": "^2.0.3"
   },
   "scripts": {
     "dev": "npm run development",
@@ -30,8 +41,5 @@
     "production": "mix --production",
     "build": "npm run production",
     "prod": "npm run production"
-  },
-  "dependencies": {
-    "normalize.css": "^8.0.1"
   }
 }
