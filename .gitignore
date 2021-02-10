@@ -19,3 +19,5 @@
 *.sass-cache
 node_modules
 mix-manifest.json
+
+/.project.repo
