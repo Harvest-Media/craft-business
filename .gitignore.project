@@ -18,6 +18,7 @@
 .sass-cache
 *.sass-cache
 node_modules
+mix-manifest.json
 
 ##################
 # Harvest Media
