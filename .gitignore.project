@@ -11,6 +11,7 @@
 /.env
 /.idea
 /vendor
+/config/license.key
 
 ##################
 # Build Files
@@ -20,4 +21,4 @@ node_modules
 
 ##################
 # Harvest Media
-/harvest-setup.sh
+/setup.sh

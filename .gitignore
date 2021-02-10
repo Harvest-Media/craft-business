@@ -11,13 +11,10 @@
 /.env
 /.idea
 /vendor
+/config/license.key
 
 ##################
 # Build Files
 .sass-cache
 *.sass-cache
 node_modules
-
-##################
-# Harvest Media Process
-/config/license.key
