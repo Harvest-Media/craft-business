@@ -1,4 +1,4 @@
-dateModified: 1612978955
+dateModified: 1612985135
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SYSTEM_EMAIL_SENDER_NAME
@@ -14,11 +14,6 @@ email:
     username: $SYSTEM_EMAIL_USERNAME
   transportType: craft\mail\transportadapters\Smtp
 plugins:
-  bust:
-    enabled: '1'
-    licenseKey: null
-    schemaVersion: 1.0.0
-    settings: null
   cache-flag:
     edition: standard
     enabled: true
@@ -41,15 +36,10 @@ plugins:
       recaptchaSiteKey: null
       recaptchaTheme: light
       showErrorLogBanner: true
-  hmsupport:
-    enabled: '1'
-    licenseKey: null
-    schemaVersion: 1.0.0
-    settings: null
   linkit:
     edition: standard
     enabled: true
-    licenseKey: 1M7QC7P7QY84PDLECATF4K3R
+    licenseKey: RKN9K9L9UD7CZYLLZLP4HSER
     schemaVersion: 1.0.8
   redactor:
     edition: standard
@@ -58,23 +48,8 @@ plugins:
   seomatic:
     edition: standard
     enabled: true
-    licenseKey: 0AAK0PBFCTL0FQ01ZQHQ4RBM
+    licenseKey: SENFZ3OU2R3CQU112JR7RBE4
     schemaVersion: 3.0.9
-  sprout-encode-email:
-    enabled: '1'
-    licenseKey: null
-    schemaVersion: 1.0.0
-    settings: null
-  trimmer:
-    enabled: '1'
-    licenseKey: null
-    schemaVersion: 1.0.0
-    settings: null
-  vz-address:
-    enabled: '1'
-    licenseKey: null
-    schemaVersion: 1.0.0
-    settings: null
 system:
   edition: pro
   live: true
