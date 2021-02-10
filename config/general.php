@@ -52,12 +52,6 @@ return [
         // Security
         'enableCsrfProtection' => true,
         'preventUserEnumeration' => true,
-        //'allowAdminChanges' => (bool)getenv('ALLOW_ADMIN_CHANGES'),
-
-        // Site Name and Url
-        'siteName' => array(
-            'en_us' => getenv('EN_US_SITE_NAME'),
-        ),
 
         // Custom Config Variables to use in Twig Templates
         'theme' => [
@@ -71,34 +65,21 @@ return [
 
     // Dev environment settings
     'dev' => [
-
-        'siteUrl' => array(
-            'en_us' => getenv('EN_US_SITE_DEV_URL')
-        ),
-
         // Dev Mode (see https://craftcms.com/guides/what-dev-mode-does)
         'devMode' => true,
         'userSessionDuration' => false,
         'enableTemplateCaching' => false,
-        'cacheMethod' => 'file',
         'backupOnUpdate' => false,
         'allowAdminChanges' => true,
     ],
 
     // Staging environment settings
     'staging' => [
-        'siteUrl' => array(
-            'en_us' => getenv('EN_US_SITE_STAGING_URL')
-        ),
         'allowAdminChanges' => true,
     ],
 
     // Production environment settings
     'production' => [
-        'siteUrl' => array(
-            'en_us' => getenv('EN_US_SITE_PRODUCTION_URL')
-        ),
-
         'allowAdminChanges' => false,
     ],
 ];
