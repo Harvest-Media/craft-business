@@ -126,7 +126,8 @@ grep -F "EN_US_SITE_NAME" .env
 
 # handling the EN_US_SITE_URL
 printf "\n\nAdding local dev address 'http://$3.test' to .env file.\n\n"
-sed -i "" "s/EN_US_SITE_URL=\"\"/EN_US_SITE_URL=\"http://$3.test\"/" .env
+sed -i "" "s/EN_US_SITE_URL=\"\"/EN_US_SITE_URL=\"http:\/\/$3.test\"/" .env
+sed -i "" "s/BROWSERSYNC_PROXY_URL=\"\"/BROWSERSYNC_PROXY_URL=\"http:\/\/$3.test\"/" .env
 
 printf "\n\n.env local dev address is now: "
 grep -F "EN_US_SITE_URL" .env
